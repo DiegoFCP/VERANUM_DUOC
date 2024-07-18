@@ -1,0 +1,248 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% comment %} {% block title %}Mi Página Personalizada{% endblock %} {% endcomment %}
+
+{% block content %}
+   
+            <!-- ========================  Header content ======================== -->
+    
+            <section class="frontpage-slider">
+                <div class="owl-slider owl-slider-header owl-slider-fullscreen">
+    
+                    <div class="item" style="background-image:url('{% static 'assets/images/slide-1.jpg' %}')">
+                        <div class="box text-center">
+                            <div class="container">
+                                <h2 class="title animated h1" data-animation="fadeInDown">
+                                    Descubre <br />
+                                    tu Refugio Ideal
+                                </h2>
+                                <div class="desc animated" data-animation="fadeInUp">
+                                    Encuentra el Hotel Perfecto para una Estancia Inolvidable
+                                </div>
+                                {% comment %} <div class="animated" data-animation="fadeInUp">
+                                    <a href="#" class="btn btn-clean">Virtual tour</a>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+                    
+    
+                    <div class="item" style="background-image:url('{% static 'assets/images/slide-2.jpg' %}')">
+                        <div class="box text-center">
+                            <div class="container">
+                                <div class="rating animated" data-animation="fadeInDown">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <h2 class="title animated h1" data-animation="fadeInDown">Tu Escapada Perfecta Te Espera</h2>
+                                <div class="desc animated" data-animation="fadeInUp">Hospédate en Nuestros Hoteles y Disfruta de la Máxima Comodidad</div>
+                                {% comment %} <div class="desc animated" data-animation="fadeInUp">Guestrooms and luxurious suites</div> {% endcomment %}
+                                {% comment %} <div class="animated" data-animation="fadeInUp">
+                                    <a href="#" class="btn btn-clean">Get insipred</a>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    </div>
+    
+                </div> <!--/owl-slider-->
+            </section>
+    
+            {% comment %} * hoteles  {% endcomment %}
+            <section class="rooms rooms-widget">
+    
+                <!-- === rooms header === -->
+    
+                <div class="section-header">
+                    <div class="container">
+                        <h2 class="title">Hoteles para reservar </h2>
+                        <p>
+                            Complementa tu Estancia con Nuestros Servicios Premium
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- === rooms content === -->
+    
+                <div class="container">
+    
+                    <div class="owl-rooms owl-theme">
+    
+                        {% for item in hoteles %}
+                        <div class="item">
+                            <article>
+                                <div class="image">
+                                    {% comment %} <img src="{% static item.imagen %}" alt="" /> {% endcomment %}
+                                    <img src="{{ item.imagen }}" alt="" />
+                                </div>
+                                <div class="details">
+                                    <div class="text">
+                                        <h3 class="title"><a href="{% url 'hotel' id_hotel=item.id_hotel %}">{{ item.nombre.upper }}</a></h3>
+                                        {% comment %} <p>Single room</p> {% endcomment %}
+                                    </div>
+                                    <div class="book">
+                                        <div>
+                                            <a href="{% url 'hotel' id_hotel=item.id_hotel %}" class="btn btn-main">ver</a>
+                                        </div>
+                                        <div>
+                                            <span class="price h4">{{ item.direccion }}</span>
+                                            <span>Por noche</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                      
+    
+                    </div><!--/owl-rooms-->
+    
+                </div> <!--/container-->
+    
+            </section>
+    
+            {% comment %} * serviociop  {% endcomment %}
+            <section class="stretcher-wrapper">
+    
+                <!-- === stretcher header === -->
+    
+                <div class="section-header">
+                    <div class="container">
+                        <h2 class="title">Servicios </h2>
+                        <p>
+                            Complementa tu Estancia con Nuestros Servicios Premium
+                        </p>
+                    </div>
+                </div>
+    
+                <!-- === stretcher === -->
+    
+                <ul class="stretcher">
+    
+                    {% comment %}  * SERVICIOS {% endcomment %}
+                    {% for item in servicios %}
+                    <li class="stretcher-item" style="background-image:url({{ item.imagen }});">
+                        <!--logo-item-->
+                        <div class="stretcher-logo">
+                            <div class="text">
+                                <span class="text-intro h4">{{ item.titulo }}</span>
+                            </div>
+                        </div>
+                        <!--main text-->
+                        {% comment %} <figure>
+                            <h4>Spa center</h4>
+                            <figcaption>Unparalleled devotion to luxury</figcaption>
+                        </figure> {% endcomment %}
+                        <!--anchor-->
+                        {% comment %} <a href="facility.html">ver</a> {% endcomment %}
+                    </li>
+                    {% endfor %}
+    
+                
+    
+                    <li class="stretcher-item more">
+                        <div class="more-icon">
+                            <span data-title-show="" data-title-hide=""></span>
+                        </div>
+                        {% comment %} <a href="facility.html">Anchor link</a> {% endcomment %}
+                    </li>
+    
+                </ul>
+            </section>
+    
+    
+            {% comment %} * testimonios {% endcomment %}
+            <section class="quotes quotes-slider" style="background-image:url(assets/images/header-1.jpg)">
+                <div class="container">
+    
+                    <!-- === Quotes header === -->
+    
+                    <div class="section-header">
+                        <h2 class="title">Testimonios</h2>
+                        {% comment %} <p>What other think about us</p> {% endcomment %}
+                    </div>
+    
+                    <div class="row">
+    
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="quote-carousel">
+    
+    
+                                <div class="quote">
+                                    <div class="text">
+                                        <h4>Daniel Elgueta</h4>
+                                        <p>Mi estancia en el hotel Veranum fue simplemente espectacular. Desde el momento en que llegué, el personal me hizo sentir como en casa. La habitación era cómoda y elegante, y la vista desde mi balcón era impresionante. Definitivamente, volveré a hospedarme aquí en mi próxima visita.</p>
+                                    </div>
+                                    <div class="more">
+                                        <div class="rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- === quoute item === -->
+    
+                                <div class="quote">
+                                    <div class="text">
+                                        <h4>Diego Cortes</h4>
+                                        <p>Veranum superó todas mis expectativas. La atención al cliente fue impecable y los servicios ofrecidos hicieron que mi estancia fuera inolvidable. Disfruté de cada detalle, desde el desayuno gourmet hasta el spa de lujo. Sin duda, uno de los mejores hoteles en los que me he alojado.</p>
+                                    </div>
+                                    <div class="more">
+                                        <div class="rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- === quoute item === -->
+    
+                                <div class="quote">
+                                    <div class="text">
+                                        <h4> Humberto Leon </h4>
+                                        <p>Pasé un fin de semana maravilloso en el hotel Veranum. La ubicación es perfecta, cerca de todas las atracciones principales, pero lo suficientemente tranquilo para relajarse. El personal fue extremadamente amable y servicial, y las instalaciones eran de primera clase. ¡Recomiendo Veranum a cualquiera que busque una experiencia hotelera de lujo!</p>
+                                    </div>
+                                    <div class="more">
+                                        <div class="rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- === quoute item === -->
+    
+                                <div class="quote">
+                                    <div class="text">
+                                        <h4>Sebastian Larosa</h4>
+                                        <p>Mi familia y yo disfrutamos muchísimo nuestra estadía en Veranum. El servicio es excepcional y las instalaciones son impecables. Los niños se divirtieron mucho en la zona de juegos y nosotros pudimos relajarnos en el spa. La comida del restaurante también fue deliciosa. Sin duda, un lugar al que volveremos pronto</p>
+                                    </div>
+                                    <div class="more">
+                                        <div class="rating">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!--/quote-carousel-->
+                        </div>
+                    </div> <!--/row-->
+                </div> <!--/container-->
+            </section>
+{% endblock %}
