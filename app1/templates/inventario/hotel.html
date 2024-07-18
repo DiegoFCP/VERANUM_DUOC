@@ -28,8 +28,9 @@
                 <div class="room-gallery">
                     <div class="container">
                         <div class="owl-slider owl-theme owl-slider-gallery">
+                            <!--<img src="https://i.ibb.co/W5WHD3n/hab4.jpg" alt="">-->
 
-                            <!-- === slide item === -->
+                            <!-- === slide item == {{ item.id_habitacion.imagen }}= -->
                             {% for item in hotel_habitaciones %}
                             <div data-id="{{ item.id_habitacion.id_habitacion }}" class="item" style="background-image:url({{ item.id_habitacion.imagen }})">
                                 <img src="{{ item.id_habitacion.imagen }}" alt="" />
